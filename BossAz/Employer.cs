@@ -19,11 +19,13 @@
         }
     }
 
-    public Employer(Guid id, string? name, string? surname, short? age, string? phone, string? city,List<Vacancy>vacancies) : base(id, name, surname, age, phone, city)
+    public Employer(Guid id, string? name, string? surname, short? age, string? phone, string? city, string? username, string? password,List<Vacancy> vacancies) : base(id, name, surname, age, phone, city, username, password)
     {
         Vacancies = vacancies;
     }
 
+
+  
     public override string ToString()
     {
         string? vacn= null;

@@ -18,7 +18,7 @@
 		}
 	}
 	private string? level;
-	public string? Level
+    public string? Level
 	{
 		get { return level; }
         set
@@ -35,6 +35,13 @@
             }
         }
     }
+
+    public Languages(string? language, string? level)
+    {
+        Language = language;
+        Level = level;
+    }
+
 
     public override string ToString()
     {

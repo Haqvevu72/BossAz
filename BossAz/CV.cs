@@ -164,10 +164,10 @@
         {
             try
             {
-                // https://www.linkedin.com/in/elgun-haqverdiyev-a34134242/
+                
                 if (value == null) { throw new NullReferenceException("Linkedin link cannot be null"); }
-                else if (!value.Contains("www.linkedin.com")) { throw new Exception("Invalid link"); }
-                Linkedin = value;
+                else if (!value.Contains("linkedin.com")) { throw new Exception("Invalid link"); }
+                linkedin = value;
             }
             catch (NullReferenceException ex)
             {
@@ -181,6 +181,10 @@
             }
         }
     }
+
+    
+
+
 
     public override string ToString()
     {
