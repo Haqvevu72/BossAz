@@ -20,10 +20,7 @@ class Program {
 
         //});
 
-
-
-
-        Console.WriteLine(BossAz.EmployerPassowordCheck());
+        BossAz.start();
 
 
 

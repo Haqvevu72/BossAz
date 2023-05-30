@@ -1,1 +1,18 @@
-{"Vacancies":[{"JobTitle":"Back-End developer","Requirements":"C#,NoSql,RESTful API,GraphQL"}],"Id":"858411e4-95e0-4f0c-b135-9a3ee92e5387","Name":"Elon","Surname":"Musk","Age":34,"Phone":"507864354","City":"Baku","Username":"Elon123","Password":"123Elon4"}
+[
+  {
+    "Vacancies": [
+      {
+        "JobTitle": "Back-End developer",
+        "Requirements": "C#,NoSql,RESTful API,GraphQL"
+      }
+    ],
+    "Id": "858411e4-95e0-4f0c-b135-9a3ee92e5387",
+    "Name": "Elon",
+    "Surname": "Musk",
+    "Age": 34,
+    "Phone": "507864354",
+    "City": "Baku",
+    "Username": "Elon123",
+    "Password": "123Elon4"
+  }
+]

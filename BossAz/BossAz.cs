@@ -1,5 +1,5 @@
 ﻿using System.Text.Json;
-
+using System.Threading;
 class BossAz
 {
     static private List<Worker>? Workers { get; set; }
@@ -13,6 +13,8 @@ class BossAz
     {
         while (true)
         {
+            
+            Console.Clear();
             Console.WriteLine("[1] Worker");
             Console.WriteLine("[2] Employer");
             Console.WriteLine("[3] Exit");
@@ -22,11 +24,11 @@ class BossAz
             if (key.Key == ConsoleKey.D1) { return 1; }
             else if (key.Key == ConsoleKey.D2) { return 2; }
             else if (key.Key == ConsoleKey.D3) { return 3; }
-            Console.Clear();
         }
     }
-    static public bool WorkerPassowordCheck() 
+    static private Worker WorkerPassowordCheck() 
     {
+        Console.Clear();
         string workers = File.ReadAllText("C:\\Users\\Zver\\source\\repos\\BossAz\\BossAz\\Workers.json");
         Workers = JsonSerializer.Deserialize<List<Worker>>(workers);
         
@@ -42,13 +44,14 @@ class BossAz
         {
             if (Workers[i].Username == username && Workers[i].Password == passwprd) 
             {
-                return true; 
+                return Workers[i]; 
             }
         }
-        return false;
+        return null;
     }
-    static public bool EmployerPassowordCheck()
+    static private Employer EmployerPassowordCheck()
     {
+        Console.Clear();
         string employers = File.ReadAllText("C:\\Users\\Zver\\source\\repos\\BossAz\\BossAz\\Employers.json");
         Employers = JsonSerializer.Deserialize<List<Employer>>(employers);
 
@@ -64,10 +67,105 @@ class BossAz
         {
             if (Employers[i].Username == username && Employers[i].Password == passwprd)
             {
-                return true;
+                return Employers[i];
             }
         }
-        return false;
+        return null;
+    }
+    static private int SigninOrSignup() 
+    {
+        while (true) 
+        {
+            Console.Clear();
+            Console.WriteLine("[1] Sign in");
+            Console.WriteLine("[2] Sing up");
+            Console.Write("Choice here...");
+            key = Console.ReadKey();
+            if (key.Key == ConsoleKey.D1) { return 1; }
+            else if (key.Key == ConsoleKey.D2) { return 2; }
+        }
+    }
+    static private void SignupWorker() 
+    {
+
+    }
+    
+    static public void start() 
+    {
+        while (true)
+        {
+            int wOre = WorkerOrEmployer();
+            if (wOre == 1)
+            {
+                int sinorsup = SigninOrSignup();
+                if (sinorsup==1) 
+                {
+                    Worker w = WorkerPassowordCheck();
+                    if (w != null) 
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("Access Successful !");
+                        Console.ResetColor();
+
+                        Thread.Sleep(1500);
+                        while (true)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("[1] See Vacancies");
+                            Console.WriteLine("[2] Exit");
+                            key = Console.ReadKey();
+                            if (key.Key == ConsoleKey.D1) { w.SeeVacancy();}
+                            else if(key.Key == ConsoleKey.D2){ break; }
+                        }
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Access Denied !");
+                        Console.ResetColor();
+                        Thread.Sleep(1500);
+                    }
+                }
+               
+            }
+            else if (wOre == 2)
+            {
+                int Sinorsup = SigninOrSignup();
+                if (Sinorsup == 1)
+                {
+                    Employer e = EmployerPassowordCheck();
+                    if (e != null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("Access Successful !");
+                        Console.ResetColor();
+                        Thread.Sleep(1500);
+                        while (true)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("[1] See CVs");
+                            Console.WriteLine("[2] Exit");
+                            key = Console.ReadKey();
+                            if (key.Key == ConsoleKey.D1) { e.SeeCV(); }
+                            else if (key.Key == ConsoleKey.D2) { break; }
+                        }
+                    }
+                    else 
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Access Denied !");
+                        Console.ResetColor();
+                        Thread.Sleep(1500);
+                    }
+                }
+            }
+            else 
+            {
+                Console.Clear();
+                Console.WriteLine("Thanks for using us !");
+                break;
+            }
+        }
     }
 }
 

@@ -1,4 +1,6 @@
-﻿class Vacancy
+﻿using Newtonsoft.Json;
+
+class Vacancy
 {
 	private string? jobtitle;
     public string? JobTitle
