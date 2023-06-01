@@ -1,41 +1,8 @@
 ﻿abstract class Human
 {
     public Guid Id { get; set; }
-    private string? name;
-    public string? Name
-    {
-        get { return name; }
-        set
-        {
-            try
-            {
-                if (value == null) { throw new NullReferenceException("Name cannot be null"); }
-                name = value;
-            }
-            catch (NullReferenceException ex) {
-                Console.Clear();
-                Console.WriteLine(ex.Message);
-            }
-        }
-    }
-    private string? surname;
-    public string? Surname
-    {
-        get { return surname; }
-        set
-        {
-            try
-            {
-                if (value == null) { throw new NullReferenceException("Surname cannot be null"); }
-                surname = value;
-            }
-            catch (NullReferenceException ex)
-            {
-                Console.Clear();
-                Console.WriteLine(ex.Message);
-            }
-        }
-    }
+    public string? Name { get; set; }
+    public string? Surname { get; set; }
     private short? age;
     public short? Age
     {
@@ -44,14 +11,8 @@
         {
             try
             {
-                if (value == null) { throw new NullReferenceException("Age cannot be null"); }
-                else if (value <= 0) { throw new Exception("Age cannot be zero or negative"); }
+                if (value <= 0) { throw new Exception("Age cannot be zero or negative"); }
                 age = value;
-            }
-            catch (NullReferenceException ex)
-            {
-                Console.Clear();
-                Console.WriteLine(ex.Message);
             }
             catch(Exception ex) 
             {
@@ -68,14 +29,8 @@
         {
             try
             {
-                if (value == null) { throw new NullReferenceException("Phone number cannot be null"); }
-                else if (value.Length!=9) { throw new Exception("Phone number must be contains 9 digit"); }
+                if (value!=null && value.Length!=9) { throw new Exception("Phone number must be contains 9 digit"); }
                 phone = value;
-            }
-            catch (NullReferenceException ex)
-            {
-                Console.Clear();
-                Console.WriteLine(ex.Message);
             }
             catch (Exception ex)
             {
@@ -84,24 +39,7 @@
             }
         }
     }
-    private string? city;
-    public string? City
-    {
-        get { return city; }
-        set
-        {
-            try
-            {
-                if (value == null) { throw new NullReferenceException("Age cannot be null"); }
-                city = value;
-            }
-            catch (NullReferenceException ex)
-            {
-                Console.Clear();
-                Console.WriteLine(ex.Message);
-            }
-        }
-    }
+    public string? City { get; set; }
     private string? username;
     public string? Username
     {

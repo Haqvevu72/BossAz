@@ -29,7 +29,7 @@ class BossAz
     static private Worker WorkerPassowordCheck() 
     {
         Console.Clear();
-        string workers = File.ReadAllText("C:\\Users\\Zver\\source\\repos\\BossAz\\BossAz\\Workers.json");
+        string workers = File.ReadAllText("C:\\Users\\Haqve_vu72\\source\\repos\\BossAz\\BossAz\\Workers.json");
         Workers = JsonSerializer.Deserialize<List<Worker>>(workers);
         
         string username;
@@ -47,12 +47,13 @@ class BossAz
                 return Workers[i]; 
             }
         }
+        Workers.Clear();
         return null;
     }
     static private Employer EmployerPassowordCheck()
     {
         Console.Clear();
-        string employers = File.ReadAllText("C:\\Users\\Zver\\source\\repos\\BossAz\\BossAz\\Employers.json");
+        string employers = File.ReadAllText("C:\\Users\\Haqve_vu72\\source\\repos\\BossAz\\BossAz\\Employers.json");
         Employers = JsonSerializer.Deserialize<List<Employer>>(employers);
 
         string username;
@@ -87,7 +88,28 @@ class BossAz
     }
     static private void SignupWorker() 
     {
+        Console.Clear();
+        string username;
+        Console.Write("Username: ");
+        username= Console.ReadLine();
 
+        string password;
+        Console.Write("Password: ");
+        password = Console.ReadLine();
+
+        
+        Worker newworker = new Worker(Guid.Empty, null, null, null, null, null, username, password, null);
+        string jsonv = File.ReadAllText("C:\\Users\\Haqve_vu72\\source\\repos\\BossAz\\BossAz\\Workers.json");
+        Workers = JsonSerializer.Deserialize<List<Worker>>(jsonv);
+        Workers.Add(newworker);
+
+        jsonv = JsonSerializer.Serialize(Workers);
+        File.WriteAllText("C:\\Users\\Haqve_vu72\\source\\repos\\BossAz\\BossAz\\Workers.json", jsonv);
+        
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("Successfully signed up!");
+        Thread.Sleep(1500);
+        Console.ResetColor();
     }
     
     static public void start() 
@@ -98,10 +120,10 @@ class BossAz
             if (wOre == 1)
             {
                 int sinorsup = SigninOrSignup();
-                if (sinorsup==1) 
+                if (sinorsup == 1)
                 {
                     Worker w = WorkerPassowordCheck();
-                    if (w != null) 
+                    if (w != null)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Access Successful !");
@@ -114,8 +136,8 @@ class BossAz
                             Console.WriteLine("[1] See Vacancies");
                             Console.WriteLine("[2] Exit");
                             key = Console.ReadKey();
-                            if (key.Key == ConsoleKey.D1) { w.SeeVacancy();}
-                            else if(key.Key == ConsoleKey.D2){ break; }
+                            if (key.Key == ConsoleKey.D1) { w.SeeVacancy(); }
+                            else if (key.Key == ConsoleKey.D2) { break; }
                         }
                     }
                     else
@@ -125,6 +147,10 @@ class BossAz
                         Console.ResetColor();
                         Thread.Sleep(1500);
                     }
+                }
+                else if (sinorsup == 2) 
+                {
+                    SignupWorker();
                 }
                
             }

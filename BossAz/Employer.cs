@@ -24,18 +24,18 @@ class Employer : Human
     {
         Vacancies = vacancies;
 
-        string jsonv = File.ReadAllText("C:\\Users\\Zver\\source\\repos\\BossAz\\BossAz\\Vacancies.json");
+        string jsonv = File.ReadAllText("C:\\Users\\Haqve_vu72\\source\\repos\\BossAz\\BossAz\\Vacancies.json");
         List<Vacancy> vs = JsonSerializer.Deserialize<List<Vacancy>>(jsonv);
         vs.AddRange(Vacancies);
 
         jsonv = JsonSerializer.Serialize(vs);
-        File.WriteAllText("C:\\Users\\Zver\\source\\repos\\BossAz\\BossAz\\Vacancies.json", jsonv);
+        File.WriteAllText("C:\\Users\\Haqve_vu72\\source\\repos\\BossAz\\BossAz\\Vacancies.json", jsonv);
     }
 
     public void SeeCV() 
     {
         ConsoleKeyInfo key;
-        string jsonCV = File.ReadAllText("C:\\Users\\Zver\\source\\repos\\BossAz\\BossAz\\CV.json");
+        string jsonCV = File.ReadAllText("C:\\Users\\Haqve_vu72\\source\\repos\\BossAz\\BossAz\\Vacancies.json");
         List<CV>CVs = JsonSerializer.Deserialize<List<CV>>(jsonCV);
         for (int i = 0; i < CVs.Count; i++)
         {

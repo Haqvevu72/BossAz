@@ -1,1 +1,25 @@
-[{"Speciality":"Back-End developer","School":"ASOIU","Point":610,"Skills":"Python,C\u002B\u002B,C#","Companies":[{"Name":"Microsoft","Finish":"2005-06-05T00:00:00","Start":"2004-06-05T00:00:00"}],"Languages":[{"Language":"English","Level":"B2-Upper Intermediate"}],"HasDiploma":false,"Github":"github.com/Haqvevu72","Linkedin":"linkedin.com/Haqvevu72"}]
+[
+  {
+    "Speciality": "Back-End developer",
+    "School": "ASOIU",
+    "Point": 610,
+    "Skills": "Python,C++,C#",
+    "Companies": [
+      {
+        "Name": "Microsoft",
+        "Finish": "2005-06-05T00:00:00",
+        "Start": "2004-06-05T00:00:00"
+      }
+    ],
+    "Languages": [
+      {
+        "Language": "English",
+        "Level": "B2-Upper Intermediate"
+      }
+    ],
+    "HasDiploma": false,
+    "Github": "github.com/Haqvevu72",
+    "Linkedin": "linkedin.com/Haqvevu72"
+  }
+]
+

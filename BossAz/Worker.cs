@@ -2,13 +2,16 @@
 
 class Worker : Human
 {
-    public CV cv { get; set; }
-    public Worker(Guid id, string? name, string? surname, short? age, string? phone, string? city, string? username, string? password,CV cv) : base(id, name, surname, age, phone, city, username, password)
+    public CV? cv { get; set; }
+    public Worker(Guid id, string? name, string? surname, short? age, string? phone, string? city, string? username, string? password,CV? cv) : base(id, name, surname, age, phone, city, username, password)
     {
         this.cv = cv;
-        List<CV> cvs = new List<CV> { cv };
-        string CVS = JsonSerializer.Serialize(cvs);
-        File.WriteAllText("C:\\Users\\Zver\\source\\repos\\BossAz\\BossAz\\CV.json", CVS);
+        string jsonv = File.ReadAllText("C:\\Users\\Haqve_vu72\\source\\repos\\BossAz\\BossAz\\CV.json");
+        List<CV> vs = JsonSerializer.Deserialize<List<CV>>(jsonv);
+        vs.Add(cv);
+
+        jsonv = JsonSerializer.Serialize(vs);
+        File.WriteAllText("C:\\Users\\Haqve_vu72\\source\\repos\\BossAz\\BossAz\\CV.json", jsonv);
     }
 
     public void SeeVacancy() 
