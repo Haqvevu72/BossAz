@@ -1,11 +1,9 @@
 [
   {
-    "Vacancies": [
-      {
-        "JobTitle": "Back-End developer",
-        "Requirements": "C#,NoSql,RESTful API,GraphQL"
-      }
-    ],
+    "Vacancy": {
+      "JobTitle": "Back-End developer",
+      "Requirements": "C#,NoSql,RESTful API,GraphQL"
+    },
     "Id": "858411e4-95e0-4f0c-b135-9a3ee92e5387",
     "Name": "Elon",
     "Surname": "Musk",
@@ -14,5 +12,16 @@
     "City": "Baku",
     "Username": "Elon123",
     "Password": "123Elon4"
+  },
+  {
+    "Vacancy": null,
+    "Id": "00000000-0000-0000-0000-000000000000",
+    "Name": null,
+    "Surname": null,
+    "Age": null,
+    "Phone": null,
+    "City": null,
+    "Username": "Polat",
+    "Password": "Alemdar12"
   }
 ]

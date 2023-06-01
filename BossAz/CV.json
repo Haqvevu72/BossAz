@@ -3,7 +3,7 @@
     "Speciality": "Back-End developer",
     "School": "ASOIU",
     "Point": 610,
-    "Skills": "Python,C++,C#",
+    "Skills": "Python,C\u002B\u002B,C#",
     "Companies": [
       {
         "Name": "Microsoft",
@@ -20,6 +20,9 @@
     "HasDiploma": false,
     "Github": "github.com/Haqvevu72",
     "Linkedin": "linkedin.com/Haqvevu72"
-  }
+  },
+  null,
+  null,
+  null,
+  null
 ]
-

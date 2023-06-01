@@ -1,48 +1,26 @@
 ﻿using System.Text.Json;
 class Employer : Human
 {
-	private List<Vacancy>? vacancies;
-    public List<Vacancy>? Vacancies
-	{
-		get { return vacancies; }
-        set
-        {
-            try
-            {
-                if (value == null) { throw new NullReferenceException("Vacancies cannot be null"); }
-                vacancies = value;
-            }
-            catch (NullReferenceException ex)
-            {
-                Console.Clear();
-                Console.WriteLine(ex.Message);
-            }
-        }
-    }
+    public Vacancy? Vacancy{get;set;}
 
-    public Employer(Guid id, string? name, string? surname, short? age, string? phone, string? city, string? username, string? password,List<Vacancy> vacancies) : base(id, name, surname, age, phone, city, username, password)
+    public Employer(Guid id, string? name, string? surname, short? age, string? phone, string? city, string? username, string? password,Vacancy? vacancy) : base(id, name, surname, age, phone, city, username, password)
     {
-        Vacancies = vacancies;
-
-        string jsonv = File.ReadAllText("C:\\Users\\Haqve_vu72\\source\\repos\\BossAz\\BossAz\\Vacancies.json");
-        List<Vacancy> vs = JsonSerializer.Deserialize<List<Vacancy>>(jsonv);
-        vs.AddRange(Vacancies);
-
-        jsonv = JsonSerializer.Serialize(vs);
-        File.WriteAllText("C:\\Users\\Haqve_vu72\\source\\repos\\BossAz\\BossAz\\Vacancies.json", jsonv);
+        Vacancy = vacancy;
     }
 
     public void SeeCV() 
     {
         ConsoleKeyInfo key;
-        string jsonCV = File.ReadAllText("C:\\Users\\Haqve_vu72\\source\\repos\\BossAz\\BossAz\\Vacancies.json");
+        string jsonCV = File.ReadAllText("C:\\Users\\Zver\\source\\repos\\BossAz\\BossAz\\CV.json");
         List<CV>CVs = JsonSerializer.Deserialize<List<CV>>(jsonCV);
         for (int i = 0; i < CVs.Count; i++)
         {
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine(CVs[i].ToString());
+                if (CVs[i] != null)
+                { Console.WriteLine(CVs[i].ToString()); }
+                else { break; }
                 Console.WriteLine("[1] Next");
                 Console.WriteLine("[2] Back");
                 Console.WriteLine("[3] Exit");
@@ -65,12 +43,8 @@ class Employer : Human
   
     public override string ToString()
     {
-        string? vacn= null;
-        for (int i = 0; i < Vacancies.Count; i++)
-        {
-            vacn += Vacancies[i].ToString();
-        }
-        return base.ToString() + vacn;
+        
+        return base.ToString() + Vacancy.ToString();
     }
 
 

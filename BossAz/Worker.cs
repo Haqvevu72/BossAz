@@ -6,12 +6,6 @@ class Worker : Human
     public Worker(Guid id, string? name, string? surname, short? age, string? phone, string? city, string? username, string? password,CV? cv) : base(id, name, surname, age, phone, city, username, password)
     {
         this.cv = cv;
-        string jsonv = File.ReadAllText("C:\\Users\\Haqve_vu72\\source\\repos\\BossAz\\BossAz\\CV.json");
-        List<CV> vs = JsonSerializer.Deserialize<List<CV>>(jsonv);
-        vs.Add(cv);
-
-        jsonv = JsonSerializer.Serialize(vs);
-        File.WriteAllText("C:\\Users\\Haqve_vu72\\source\\repos\\BossAz\\BossAz\\CV.json", jsonv);
     }
 
     public void SeeVacancy() 
@@ -24,7 +18,9 @@ class Worker : Human
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine(vaca[i].ToString());
+                if (vaca[i] != null)
+                { Console.WriteLine(vaca[i].ToString()); }
+                else { break; }
                 Console.WriteLine("[1] Next");
                 Console.WriteLine("[2] Back");
                 Console.WriteLine("[3] Exit");

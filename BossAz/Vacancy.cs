@@ -8,16 +8,8 @@ class Vacancy
 		get { return jobtitle; }
         set
         {
-            try
-            {
-                if (value == null) { throw new NullReferenceException("Job title cannot be null"); }
                 jobtitle = value;
-            }
-            catch (NullReferenceException ex)
-            {
-                Console.Clear();
-                Console.WriteLine(ex.Message);
-            }
+
         }
     }
     private string? requirements;
@@ -26,16 +18,9 @@ class Vacancy
         get { return requirements; }
         set
         {
-            try
-            {
-                if (value == null) { throw new NullReferenceException("Requirements cannot be null"); }
+
                 requirements = value;
-            }
-            catch (NullReferenceException ex)
-            {
-                Console.Clear();
-                Console.WriteLine(ex.Message);
-            }
+
         }
     }
 

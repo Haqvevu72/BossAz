@@ -1,4 +1,5 @@
-﻿class CV {
+﻿using System.Text.Json;
+class CV {
 	private string? speciality;
 	public string? Speciality
 	{
@@ -182,7 +183,6 @@
         }
     }
 
-    
 
 
 

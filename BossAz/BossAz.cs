@@ -29,7 +29,7 @@ class BossAz
     static private Worker WorkerPassowordCheck() 
     {
         Console.Clear();
-        string workers = File.ReadAllText("C:\\Users\\Haqve_vu72\\source\\repos\\BossAz\\BossAz\\Workers.json");
+        string workers = File.ReadAllText("C:\\Users\\Zver\\source\\repos\\BossAz\\BossAz\\Workers.json");
         Workers = JsonSerializer.Deserialize<List<Worker>>(workers);
         
         string username;
@@ -53,7 +53,7 @@ class BossAz
     static private Employer EmployerPassowordCheck()
     {
         Console.Clear();
-        string employers = File.ReadAllText("C:\\Users\\Haqve_vu72\\source\\repos\\BossAz\\BossAz\\Employers.json");
+        string employers = File.ReadAllText("C:\\Users\\Zver\\source\\repos\\BossAz\\BossAz\\Employers.json");
         Employers = JsonSerializer.Deserialize<List<Employer>>(employers);
 
         string username;
@@ -71,6 +71,7 @@ class BossAz
                 return Employers[i];
             }
         }
+        Employers.Clear();
         return null;
     }
     static private int SigninOrSignup() 
@@ -99,19 +100,61 @@ class BossAz
 
         
         Worker newworker = new Worker(Guid.Empty, null, null, null, null, null, username, password, null);
-        string jsonv = File.ReadAllText("C:\\Users\\Haqve_vu72\\source\\repos\\BossAz\\BossAz\\Workers.json");
+        string jsonv = File.ReadAllText("C:\\Users\\Zver\\source\\repos\\BossAz\\BossAz\\Workers.json");
         Workers = JsonSerializer.Deserialize<List<Worker>>(jsonv);
         Workers.Add(newworker);
 
+        List<CV> cvs = new List<CV>();
+        for (int i =0 ; i < Workers.Count; i++)
+        {
+            cvs.Add(Workers[i].cv);
+        }
+
+        string jsoncv = JsonSerializer.Serialize(cvs);
+        File.WriteAllText("C:\\Users\\Zver\\source\\repos\\BossAz\\BossAz\\CV.json", jsoncv);
+
         jsonv = JsonSerializer.Serialize(Workers);
-        File.WriteAllText("C:\\Users\\Haqve_vu72\\source\\repos\\BossAz\\BossAz\\Workers.json", jsonv);
+        File.WriteAllText("C:\\Users\\Zver\\source\\repos\\BossAz\\BossAz\\Workers.json", jsonv);
         
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("Successfully signed up!");
         Thread.Sleep(1500);
         Console.ResetColor();
     }
-    
+    static private void SignupEmployer() 
+    {
+        Console.Clear();
+        string username;
+        Console.Write("Username: ");
+        username = Console.ReadLine();
+
+        string password;
+        Console.Write("Password: ");
+        password = Console.ReadLine();
+
+
+        Employer newemployer = new Employer(Guid.Empty, null, null, null, null, null, username, password, null);
+        string jsonv = File.ReadAllText("C:\\Users\\Zver\\source\\repos\\BossAz\\BossAz\\Employers.json");
+        Employers = JsonSerializer.Deserialize<List<Employer>>(jsonv);
+        Employers.Add(newemployer);
+
+        List<Vacancy> cvs = new List<Vacancy>();
+        for (int i = 0; i < Employers.Count; i++)
+        {
+            cvs.Add(Employers[i].Vacancy);
+        }
+
+        string jsoncv = JsonSerializer.Serialize(cvs);
+        File.WriteAllText("C:\\Users\\Zver\\source\\repos\\BossAz\\BossAz\\Vacancies.json", jsoncv);
+
+        jsonv = JsonSerializer.Serialize(Employers);
+        File.WriteAllText("C:\\Users\\Zver\\source\\repos\\BossAz\\BossAz\\Employers.json", jsonv);
+
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("Successfully signed up!");
+        Thread.Sleep(1500);
+        Console.ResetColor();
+    }
     static public void start() 
     {
         while (true)
@@ -176,13 +219,17 @@ class BossAz
                             else if (key.Key == ConsoleKey.D2) { break; }
                         }
                     }
-                    else 
+                    else
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Access Denied !");
                         Console.ResetColor();
                         Thread.Sleep(1500);
                     }
+                }
+                else if (Sinorsup==2) 
+                {
+                    SignupEmployer();
                 }
             }
             else 
