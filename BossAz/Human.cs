@@ -94,12 +94,7 @@
         Username = username;
         Password = password;
     }
-
-
-
-
-
-
+    
     public override string ToString()
     {
         return $"Id: {Id}\tName: {Name}\tSurname: {Surname}\tAge: {Age}\tPhone: {Phone}\tCity: {City}";

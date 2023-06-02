@@ -23,6 +23,7 @@ class Vacancy
 
         }
     }
+    public Notification? Notification { get; set; } = null;
 
     public Vacancy(string? jobTitle, string? requirements)
     {
@@ -30,6 +31,10 @@ class Vacancy
         Requirements = requirements;
     }
 
+    public void SeeNotif() 
+    {
+        Console.WriteLine(Notification.ToString());
+    }
     public override string ToString()
     {
         return $"\nJob Title: {JobTitle}\nRequirements: {Requirements}";

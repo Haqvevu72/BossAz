@@ -182,9 +182,12 @@ class CV {
             }
         }
     }
+    public Notification? Notification { get; set; } = null;
 
-
-
+    public void SeeNotif() 
+    {
+        Console.WriteLine(Notification.ToString());
+    }
 
     public override string ToString()
     {

@@ -2,7 +2,12 @@
   {
     "Vacancy": {
       "JobTitle": "Back-End developer",
-      "Requirements": "C#,NoSql,RESTful API,GraphQL"
+      "Requirements": "C#,NoSql,RESTful API,GraphQL",
+      "Notification": {
+        "By": "Elgun",
+        "Message": "Hi , I\u0027m Elgun Haqverdiyev 5 years experienced Back-End Dev . I would be glad for work for your company",
+        "SendTime": "2023-06-02T09:50:51.8390746+04:00"
+      }
     },
     "Id": "858411e4-95e0-4f0c-b135-9a3ee92e5387",
     "Name": "Elon",
@@ -23,5 +28,16 @@
     "City": null,
     "Username": "Polat",
     "Password": "Alemdar12"
+  },
+  {
+    "Vacancy": null,
+    "Id": "00000000-0000-0000-0000-000000000000",
+    "Name": null,
+    "Surname": null,
+    "Age": null,
+    "Phone": null,
+    "City": null,
+    "Username": "Erkan",
+    "Password": "Erkan1997"
   }
 ]

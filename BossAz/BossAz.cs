@@ -177,10 +177,12 @@ class BossAz
                         {
                             Console.Clear();
                             Console.WriteLine("[1] See Vacancies");
-                            Console.WriteLine("[2] Exit");
+                            Console.WriteLine("[2] See Notifications");
+                            Console.WriteLine("[3] Exit");
                             key = Console.ReadKey();
                             if (key.Key == ConsoleKey.D1) { w.SeeVacancy(); }
-                            else if (key.Key == ConsoleKey.D2) { break; }
+                            else if (key.Key == ConsoleKey.D2) { w.SeeNotif(); }
+                            else if (key.Key == ConsoleKey.D3) { break; }
                         }
                     }
                     else
@@ -213,10 +215,12 @@ class BossAz
                         {
                             Console.Clear();
                             Console.WriteLine("[1] See CVs");
-                            Console.WriteLine("[2] Exit");
+                            Console.WriteLine("[2] See Notification");
+                            Console.WriteLine("[3] Exit");
                             key = Console.ReadKey();
                             if (key.Key == ConsoleKey.D1) { e.SeeCV(); }
-                            else if (key.Key == ConsoleKey.D2) { break; }
+                            else if (key.Key == ConsoleKey.D2) { e.SeeNotif(); }
+                            else if (key.Key == ConsoleKey.D3) { break; }
                         }
                     }
                     else
